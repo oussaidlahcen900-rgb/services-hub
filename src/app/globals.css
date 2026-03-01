@@ -1,0 +1,43 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: var(--font-inter);
+  --color-luxury-dark: #020617;
+  /* Slate 950 */
+  --color-royal-purple: #2e1065;
+  /* Violet 950 */
+  --color-midnight-blue: #1e1b4b;
+  /* Indigo 950 */
+}
+
+:root {
+  --background: #020617;
+  --foreground: #ffffff;
+}
+
+body {
+  background-color: var(--color-luxury-dark);
+  /* Deep Navy -> Royal Purple -> Midnight Blue Gradient */
+  background-image:
+    radial-gradient(circle at 15% 50%, rgba(46, 16, 101, 0.4) 0%, transparent 50%),
+    /* Royal Purple Left */
+    radial-gradient(circle at 85% 30%, rgba(30, 58, 138, 0.4) 0%, transparent 50%),
+    /* Blue Right */
+    radial-gradient(circle at 50% 0%, rgba(88, 28, 135, 0.3) 0%, transparent 60%);
+  /* Top Center Glow */
+
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* Glassmorphism Utilities */
+.glass-card {
+  @apply bg-white/5 backdrop-blur-xl border border-white/10 shadow-xl;
+}
+
+.glass-nav {
+  @apply bg-[#020617]/80 backdrop-blur-lg border-b border-white/5;
+}
