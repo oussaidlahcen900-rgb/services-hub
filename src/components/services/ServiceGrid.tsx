@@ -29,6 +29,7 @@ const productsList = [
         name: 'ChatGPT Plus',
         category: 'AI Tools',
         icon: ChatGPTIcon,
+        imageIcon: 'https://logo.clearbit.com/openai.com',
         color: 'text-teal-400',
         bg: 'from-teal-600/20 to-black/40',
         rating: '5.0',
@@ -38,6 +39,7 @@ const productsList = [
         name: 'Gemini Pro',
         category: 'AI Tools',
         icon: GeminiIcon,
+        imageIcon: 'https://img.icons8.com/color/512/google-gemini.png',
         color: 'text-blue-400',
         bg: 'from-blue-600/20 to-black/40',
         rating: '4.9',
@@ -47,6 +49,7 @@ const productsList = [
         name: 'Perplexity AI',
         category: 'AI Tools',
         icon: PerplexityIcon,
+        imageIcon: 'https://logo.clearbit.com/perplexity.ai',
         color: 'text-cyan-400',
         bg: 'from-cyan-600/20 to-black/40',
         rating: '4.8',
@@ -56,6 +59,7 @@ const productsList = [
         name: 'Netflix Premium',
         category: 'Streaming',
         icon: NetflixIcon,
+        imageIcon: 'https://logo.clearbit.com/netflix.com',
         color: 'text-red-500',
         bg: 'from-red-600/20 to-black/40',
         rating: '5.0',
@@ -65,6 +69,7 @@ const productsList = [
         name: 'IPTV Ultimate',
         category: 'Streaming',
         icon: IPTVIcon,
+        imageIcon: 'https://img.icons8.com/color/512/tv.png',
         color: 'text-orange-400',
         bg: 'from-orange-600/20 to-black/40',
         rating: '4.7',
@@ -74,6 +79,7 @@ const productsList = [
         name: 'Spotify Premium',
         category: 'Music',
         icon: SpotifyIcon,
+        imageIcon: 'https://logo.clearbit.com/spotify.com',
         color: 'text-green-500',
         bg: 'from-green-600/20 to-black/40',
         rating: '5.0',
@@ -83,6 +89,7 @@ const productsList = [
         name: 'Windows 11 Pro',
         category: 'Productivity',
         icon: WindowsIcon,
+        imageIcon: 'https://logo.clearbit.com/microsoft.com',
         color: 'text-blue-500',
         bg: 'from-blue-600/20 to-black/40',
         rating: '4.9',
@@ -92,6 +99,7 @@ const productsList = [
         name: 'Canva Pro',
         category: 'Productivity',
         icon: CanvaIcon,
+        imageIcon: 'https://logo.clearbit.com/canva.com',
         color: 'text-purple-400',
         bg: 'from-purple-600/20 to-black/40',
         rating: '4.9',
@@ -101,6 +109,7 @@ const productsList = [
         name: 'CapCut Pro',
         category: 'Productivity',
         icon: CapCutIcon,
+        imageIcon: 'https://logo.clearbit.com/capcut.com',
         color: 'text-pink-400',
         bg: 'from-pink-600/20 to-black/40',
         rating: '4.8',
@@ -110,6 +119,7 @@ const productsList = [
         name: 'Discord Nitro',
         category: 'Social',
         icon: DiscordIcon,
+        imageIcon: 'https://logo.clearbit.com/discord.com',
         color: 'text-indigo-400',
         bg: 'from-indigo-600/20 to-black/40',
         rating: '4.9',
@@ -119,6 +129,7 @@ const productsList = [
         name: 'Truecaller Premium',
         category: 'Social',
         icon: TruecallerIcon,
+        imageIcon: 'https://logo.clearbit.com/truecaller.com',
         color: 'text-blue-600',
         bg: 'from-blue-700/20 to-black/40',
         rating: '4.7',
@@ -128,6 +139,7 @@ const productsList = [
         name: 'WASender Pro',
         category: 'Tools',
         icon: WASenderIcon,
+        imageIcon: 'https://logo.clearbit.com/whatsapp.com',
         color: 'text-green-600',
         bg: 'from-green-700/20 to-black/40',
         rating: '4.8',
@@ -137,12 +149,14 @@ const productsList = [
         name: 'TikTok Beta',
         category: 'Social',
         icon: TikTokIcon,
+        imageIcon: 'https://logo.clearbit.com/tiktok.com',
         color: 'text-white',
         bg: 'from-gray-600/20 to-black/40',
         rating: '4.6',
         activeCount: '2.1k+'
     },
 ];
+
 
 
 
@@ -225,7 +239,20 @@ export function ServiceGrid() {
                                         "relative w-24 h-24 rounded-3xl flex items-center justify-center shadow-2xl border border-white/10 bg-black/40 backdrop-blur-md transition-all duration-500 group-hover:border-white/30",
                                         product.color
                                     )}>
-                                        <product.icon className="w-12 h-12 drop-shadow-[0_0_15px_currentColor]" strokeWidth={1.5} />
+                                        {product.imageIcon ? (
+                                            /* eslint-disable-next-line @next/next/no-img-element */
+                                            <img
+                                                src={product.imageIcon}
+                                                alt={product.name}
+                                                className="w-12 h-12 object-contain drop-shadow-xl"
+                                                loading="lazy"
+                                                onError={(e) => {
+                                                    e.currentTarget.style.display = 'none';
+                                                }}
+                                            />
+                                        ) : (
+                                            <product.icon className="w-12 h-12 drop-shadow-[0_0_15px_currentColor]" strokeWidth={1.5} />
+                                        )}
                                     </div>
                                 </div>
 
